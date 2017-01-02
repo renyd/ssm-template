@@ -2,5 +2,4 @@
 src/main/webapp/resources/
 src/test/
 ssm-template.iml
-target/generated-sources/
-target/surefire/
+target/
