@@ -12,5 +12,17 @@
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <bean id="flowHealthChecker" class="com.ssm.common.health.impl.FlowHealthChecker"/>
+    <bean id="pubNetworkHealthChecker" class="com.ssm.common.health.impl.PUBNetworkHealthChecker"/>
+    <bean id="tomcatHealthChecker" class="com.ssm.common.health.impl.TomcatHealthChecker"/>
 
+    <bean class="com.ssm.common.health.HealthCheckMaster">
+        <property name="checkerList">
+            <list>
+                <ref bean="flowHealthChecker"/>
+                <ref bean="pubNetworkHealthChecker"/>
+                <ref bean="tomcatHealthChecker"/>
+            </list>
+        </property>
+    </bean>
 </beans>
