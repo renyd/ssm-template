@@ -12,10 +12,9 @@
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="com.ssm"></context:component-scan>
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
 
-    <import resource="spring-dao.xml"/>
-    <import resource="spring-service.xml"/>
-    <import resource="spring-datasource.xml"/>
-    <import resource="spring-tx.xml"/>
+    <tx:annotation-driven transaction-manager="transactionManager" />
 </beans>
