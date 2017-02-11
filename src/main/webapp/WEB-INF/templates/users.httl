@@ -1,0 +1,24 @@
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+
+<table>
+    #for(User user : users)
+    <tr>
+        <td>
+            #{for.count}
+        </td>
+        <td>
+            #{user.name}
+        </td>
+        <td>
+            ${user.createTime.format("yyyy-MM-dd HH:mm:ss")}
+        </td>
+    </tr>
+    #end
+</table>
+
+</body>
+</html>

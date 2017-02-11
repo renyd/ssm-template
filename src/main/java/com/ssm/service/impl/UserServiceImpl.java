@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Domg on 2017/1/15.
@@ -21,6 +23,10 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
     @Resource
     private UserRoleMapper userRoleMapper;
+
+    public List<User> selectByParams(Map<String, Object> params) {
+        return userMapper.selectByParams(params);
+    }
 
     @Transactional("transactionManager")
     public void addUserRole() {

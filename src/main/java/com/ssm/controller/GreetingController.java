@@ -3,11 +3,12 @@ package com.ssm.controller;
 import com.ssm.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Domg on 2017/1/2.
@@ -31,6 +32,16 @@ public class GreetingController {
     public String testTx() {
         userService.addUserRole();
         return "hello";
+    }
+
+    @RequestMapping("/users")
+    public String users(Map<String, Object> context) {
+        try {
+            context.put("users", userService.selectByParams(new HashMap<String, Object>()));
+        } catch (Exception e) {
+            LOG.error("users exception", e);
+        }
+        return "users";
     }
 
 }
